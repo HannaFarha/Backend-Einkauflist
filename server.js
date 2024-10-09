@@ -56,6 +56,7 @@ app.post('/todo', async (request, response) => {
 //   }
 // })
 
+
 app.delete('/:todoId', async (request, response) => {
   const { todoId } = request.params
   try {
@@ -71,10 +72,11 @@ mongoose
   .connect("mongodb://127.0.0.1:27017/Mongo")
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    app.listen(3100, () => {
+    app.listen(3100 || process.env.PORT, () => {
       console.log('Server running on http://localhost:3000')
     })
   })
   .catch(error => {
     console.log('Problem connection to the DB', error)
   })
+  export default Server.js

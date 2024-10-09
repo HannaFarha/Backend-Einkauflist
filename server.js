@@ -44,17 +44,6 @@ app.post('/todo', async (request, response) => {
   }
 })
 
-// app.put('/api/books/:bookId', async (request, response) => {
-//   console.log(request.body)
-//   const payload = request.body
-//   try {
-//     const updatedBook = await Book.findByIdAndUpdate(request.params.bookId, payload, { new: true })
-//     response.status(202).json(updatedBook)
-//   } catch (error) {
-//     console.log(error)
-//     response.status(500).json({ message: 'Something bad happened' })
-//   }
-// })
 
 
 app.delete('/:todoId', async (request, response) => {
@@ -72,7 +61,7 @@ mongoose
   .connect("mongodb://127.0.0.1:27017/Mongo")
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    app.listen(3100 || process.env.PORT, () => {
+    app.listen( process.env.PORT, () => {
       console.log('Server running on http://localhost:3000')
     })
   })

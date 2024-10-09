@@ -58,7 +58,7 @@ app.delete('/:todoId', async (request, response) => {
 })
 
 mongoose
-  .connect(process.env.MONGODB_CONNENT_URL)
+  .connect(process.env.MONGODB_CONNECT_URL)
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     app.listen( process.env.PORT, () => {

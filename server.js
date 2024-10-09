@@ -79,4 +79,4 @@ mongoose
   .catch(error => {
     console.log('Problem connection to the DB', error)
   })
-  export default Server.js
+  export default server.js

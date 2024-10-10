@@ -18,14 +18,6 @@ app.get('/', async (request, response) => {
   response.json(tOdo)
 })
 
-  // app.get('/api/:todoId', async (request, response) => {
-  //   const { bookId } = request.params
-
-  //   const oneBook = await todo.findById(bookId)
-
-  //   response.json(oneBook)
-  // })
-
 
 app.post('/todo', async (request, response) => {
   // Get back the data from the request
@@ -44,8 +36,6 @@ app.post('/todo', async (request, response) => {
   }
 })
 
-
-
 app.delete('/:todoId', async (request, response) => {
   const { todoId } = request.params
   try {
@@ -56,13 +46,13 @@ app.delete('/:todoId', async (request, response) => {
     response.status(500).json({ message: 'Something bad happened' })
   }
 })
-
+const PORT=process.env.PORT
 mongoose
-  .connect(process.env.MONGODB_CONNECT_URL)
+  .connect("mongodb://127.0.0.1:27017/Mongo")
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    app.listen( process.env.PORT, () => {
-      console.log('Server running on http://localhost:3000')
+    app.listen(3100 || process.env.PORT, () => {
+      console.log('Server running on'+ PORT)
     })
   })
   .catch(error => {

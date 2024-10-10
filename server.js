@@ -53,7 +53,7 @@ mongoose
   .connect("mongodb://127.0.0.1:27017/Mongo")
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    app.listen(PORT, () => {
+    app.listen(PORT||3100, () => {
       console.log('Server running on '+  PORT)
     })
   })

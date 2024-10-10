@@ -5,7 +5,8 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 const cors = require('cors')
-
+//const { config } = require('dotenv')
+require('dotenv').config()
 let corsOptions = {
    origin : ['http://localhost:3000'],
 }
@@ -47,12 +48,13 @@ app.delete('/:todoId', async (request, response) => {
   }
 })
 const PORT=process.env.PORT
+
 mongoose
   .connect("mongodb://127.0.0.1:27017/Mongo")
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    app.listen(3100 || process.env.PORT, () => {
-      console.log('Server running on'+ PORT)
+    app.listen(PORT, () => {
+      console.log('Server running on '+  PORT)
     })
   })
   .catch(error => {

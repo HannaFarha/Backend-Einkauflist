@@ -50,7 +50,11 @@ app.delete('/:todoId', async (request, response) => {
 const PORT=process.env.PORT || 8080;
 
 mongoose
-  .connect(process.env.MONGODB_CONNECT_URL,{ useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGODB_CONNECT_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000 
+  })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     app.listen(PORT, () => {

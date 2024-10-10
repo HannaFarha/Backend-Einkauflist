@@ -60,4 +60,6 @@ mongoose
   .catch(error => {
     console.log('Problem connection to the DB', error)
   })
-  
+  module.exports = (req, res) => {
+    app(req, res);
+};

@@ -47,13 +47,13 @@ app.delete('/:todoId', async (request, response) => {
     response.status(500).json({ message: 'Something bad happened' })
   }
 })
-const PORT=process.env.PORT
+const PORT=process.env.PORT || 3100;
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/Mongo")
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    app.listen(PORT||3100, () => {
+    app.listen(PORT, () => {
       console.log('Server running on '+  PORT)
     })
   })

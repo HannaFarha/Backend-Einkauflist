@@ -8,7 +8,7 @@ const cors = require('cors')
 //const { config } = require('dotenv')
 require('dotenv').config()
 let corsOptions = {
-   origin : ['https://todolist-hannafarha.netlify.app/'],
+   origin : [process.env.ORIGIN],
 }
 
 app.use(cors(corsOptions))
@@ -69,6 +69,7 @@ mongoose
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     app.listen(PORT, () => {
       console.log('Server running on '+  PORT)
+      console.log(process.env.ORIGIN)
     })
   })
   .catch(error => {

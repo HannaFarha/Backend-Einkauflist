@@ -52,8 +52,8 @@ const PORT=process.env.PORT || 8080;
 mongoose
   .connect(process.env.MONGODB_CONNECT_URL,{
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000 
+    useUnifiedTopology: true
+   
   })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)

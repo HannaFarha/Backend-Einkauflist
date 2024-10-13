@@ -8,7 +8,7 @@ const cors = require('cors')
 //const { config } = require('dotenv')
 require('dotenv').config()
 let corsOptions = {
-   origin : [process.env.ORIGIN],
+   origin : ['http://localhost:3000'],
 }
 
 app.use(cors(corsOptions))

@@ -8,7 +8,7 @@ const cors = require('cors')
 //const { config } = require('dotenv')
 require('dotenv').config()
 let corsOptions = {
-   origin : ['https://todolist-hannafarha.netlify.app'],
+   origin : ['https://todolist-hannafarha.netlify.app/'],
 }
 
 app.use(cors(corsOptions))
@@ -37,16 +37,26 @@ app.post('/todo', async (request, response) => {
   }
 })
 
-app.delete('/:todoId', async (request, response) => {
-  const { todoId } = request.params
+// app.delete('/:todoId', async (request, response) => {
+//   const { todoId } = request.params
+//   try {
+//     const bookToDelete = await todo.findByIdAndDelete(todoId)
+//     response.status(202).json({ message: `${bookToDelete.title} was remove from the db` })
+//   } catch (error) {
+//     console.log(error)
+//     response.status(500).json({ message: 'Something bad happened' })
+//   }
+// })
+app.delete('/:title', async (request, response) => {
+  const { title } = request.params;
   try {
-    const bookToDelete = await todo.findByIdAndDelete(todoId)
-    response.status(202).json({ message: `${bookToDelete.title} was remove from the db` })
+    const todoToDelete = await todo.findOneAndDelete({ title });
+    response.status(202).json({ message: `${todoToDelete.title} was removed from the db` });
   } catch (error) {
-    console.log(error)
-    response.status(500).json({ message: 'Something bad happened' })
+    console.log(error);
+    response.status(500).json({ message: 'Something bad happened' });
   }
-})
+});
 const PORT=process.env.PORT || 8080;
 
 mongoose

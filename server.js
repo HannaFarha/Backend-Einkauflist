@@ -8,7 +8,7 @@ const cors = require('cors')
 //const { config } = require('dotenv')
 require('dotenv').config()
 let corsOptions = {
-   origin : ['https://beamish-taiyaki-0864ce.netlify.app/'],
+   origin : ['https://beamish-taiyaki-0864ce.netlify.app'],
 }
 
 app.use(cors(corsOptions))

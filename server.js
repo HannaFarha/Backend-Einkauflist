@@ -8,7 +8,7 @@ const cors = require('cors')
 //const { config } = require('dotenv')
 require('dotenv').config()
 let corsOptions = {
-   origin : ['https://wrap4friend-hannafarha.netlify.app/'],
+   origin : ['https://wrap4friend-hannafarha.netlify.app'],
 }
 
 app.use(cors(corsOptions))
